@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>在线通讯录</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div class="main">
+			<div class="header">
+				<div class="logo">
+					<img src="img/logo.png" >
+					<div class="text">
+						在线通讯录
+					</div>
+				</div>
+				<div class="search">
+					<input type="text" class="search_input" />
+					<div class="icon">	
+					</div>
+				</div>
+				<div class="login">
+					<a href="login.html">登录</a>
+					<a href="">|</a>
+					<a href="">注册</a>
+				</div>
+			</div>
+			<div class="depart">	
+			</div>
+			<div class="content">
+				<div class="left">
+					<ul id="menu">
+						<li><a href="">序号</a></li>
+						<li><a href="">姓名</a></li>
+						<li><a href="">电话</a></li>
+						<li><a href="">邮箱</a></li>
+						<li><a href="">住址</a></li>
+						<li><a href="">QQ号</a></li>
+					</ul>
+					<ul class="list">
+						<li><p>1</p></li>
+						<li><p>何行</p></li>
+						<li><p>13053179645</p></li>
+						<li><p>1418226938@qq.com</p></li>
+						<li><p>北京邮电大学学生宿舍一</p></li>
+						<li><p>1418226938</a></li>
+						<button type="button" class="btn">删除</button>
+						<button type="button" class="btn">修改</button>
+					</ul>
+				</div>
+				<div class="right">
+					<div class="add" onclick="displayWindow()">
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				
+			</div>
+			
+			<div id="add_list" class="add_css">
+				<div style="margin-top: 20px;"></div>
+				<div id="input_div">
+					<p>姓名：</p>
+					<input type="text" name="" id="name" value="" />
+				</div>
+				<div id="input_div">
+					<p>电话：</p>
+					<input type="text" name="" id="phone" value="" />
+				</div>
+				<div id="input_div">
+					<p>邮箱：</p>
+					<input type="text" name="" id="email" value="" />
+				</div>
+				<div id="input_div">
+					<p>住址：</p>
+					<input type="text" name="" id="address" value="" />
+				</div>
+				<div id="input_div">
+					<p>QQ：</p>
+					<input type="text" name="" id="qq" value="" />
+				</div>
+				<div id="btn_add_wrap">
+					<button type="button" class="btn_add" onclick="addList()">添加</button>
+					<button type="button" class="btn_add" onclick="hideWindow()">关闭</button>
+				</div>
+				
+			</div>
+			<div id="shadow" class="shadow_css">
+			</div>
+		</div>
+	</body>
+</html>
