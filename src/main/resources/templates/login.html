@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>在线通讯录</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<div class="body">
+    <div class="login_index">
+        <div class="title">
+            <p>用户登录</p>
+        </div>
+        <form th:action="@{/login}" method="post">
+            <div class="username">
+                <p>用户名</p>
+                <input type="text" placeholder="请输入用户名" name="username"/>
+            </div>
+            <div class="password">
+                <p>密码</p>
+                <input type="password" placeholder="请输入密码" name="password"/>
+            </div>
+            <div class="footbar">
+                <div class="footbar-front">
+                    <a href="" style="margin-left: 150px;">忘记密码? |</a>
+                    <a href="">&nbsp;&nbsp;注册账号</a>
+                </div>
+                <button type="submit" class="login-button" >登 录</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>
+<script>
+</script>
