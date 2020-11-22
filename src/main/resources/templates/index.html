@@ -59,7 +59,7 @@
 <!--    添加表单-->
     <div id="add_list" class="add_css">
         <div style="margin-top: 20px;"></div>
-        <form th:action="@{/index}" method="post" >
+        <form th:action="@{/index}" method="post" onsubmit="return addList();">
             <div id="input_div">
                 <p>姓名：</p>
                 <input type="text" placeholder="您的姓名" id="name" name="name" autocomplete="off"/>
@@ -91,7 +91,7 @@
 <!--    修改表单-->
     <div id="change_list" class="add_css">
         <div style="margin-top: 20px;"></div>
-        <form th:action="@{/changeItem}" method="post" >
+        <form th:action="@{/changeItem}" method="post" onsubmit="return addList();">
             <input type="number" style="display: none" id="_id" name="id">
             <div id="input_div">
                 <p>姓名：</p>

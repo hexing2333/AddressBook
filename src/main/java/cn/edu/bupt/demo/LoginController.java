@@ -25,10 +25,16 @@ public class LoginController {
                            @RequestParam("password") String password,
                            HttpServletRequest request, HttpServletResponse response) throws IOException {
         //POST表单提交到/login，将username和isLogin设置后添加到Session中，并重定向到主页
-        System.out.println("添加Session");
-        HttpSession session=request.getSession();
-        session.setAttribute("islogin","true");
-        session.setAttribute("username",username);
-        return "redirect:/index";
+        System.out.println(username+password);
+        if(username.equals("2018211582")&&password.equals("123456")){
+            System.out.println("添加Session");
+            HttpSession session=request.getSession();
+            session.setAttribute("islogin","true");
+            session.setAttribute("username",username);
+            return "redirect:/index";
+        }
+        else {
+            return "/login";
+        }
     }
 }

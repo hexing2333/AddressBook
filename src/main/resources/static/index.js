@@ -45,14 +45,18 @@ function addList(){
     var qq_re=/^[0-9]{5,10}$/;
     if(!email_re.test(email)){
         alert("电子邮件格式不正确");
+        return false;
     }
     else if(!phone_re.test(phone)){
         alert("电话格式不正确");
+        return false;
     }
     else if(!qq_re.test(qq)){
         alert("qq格式不正确");
+        return false;
     }
     else{
+        return true;
         document.getElementById("add_list").style.display="none";
         document.getElementById("shadow").style.display="none";
     }
