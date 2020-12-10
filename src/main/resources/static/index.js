@@ -7,16 +7,18 @@ function displayAddWindow(){
     document.getElementById("email").value="";
     document.getElementById("address").value="";
     document.getElementById("qq").value="";
+    $("#phoneAlert").text("")
 }
 function displayChangeWindow(){
     document.getElementById("change_list").style.display="flex";
     document.getElementById("change_list").style.flexDirection="column";
     document.getElementById("shadow").style.display="block";
+    $("#_phoneAlert").text("")
 }
-function deleteItem(id){
+function deleteItem(index){
     var flag=confirm("确认删除?");
     if(flag){
-        window.location.replace("/deleteItem?itemId="+id);
+        window.location.replace("/deleteItem?itemId="+index);
     }
 }
 function changeItem(id,name,phone,email,address,qq){
@@ -41,7 +43,7 @@ function addList(){
     var qq=document.getElementById("qq").value;
 
     var email_re=/^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
-    var phone_re=/^(13[0-9]\d{8}|15[0-35-9]\d{8}|18[0-9]\{8}|14[57]\d{8})$/;
+    var phone_re=/^(13[0-9]\d{8}|15[0-35-9]\d{8}|18[0-9]\{8}|14[57]\d{8}|17[-9]\d{8})$/;
     var qq_re=/^[0-9]{5,10}$/;
     if(!email_re.test(email)){
         alert("电子邮件格式不正确");
@@ -56,8 +58,37 @@ function addList(){
         return false;
     }
     else{
-        return true;
         document.getElementById("add_list").style.display="none";
         document.getElementById("shadow").style.display="none";
+        return true;
+    }
+}
+
+function changeList(){
+    var name=document.getElementById("_name").value;
+    var phone=document.getElementById("_phone").value;
+    var email=document.getElementById("_email").value;
+    var address=document.getElementById("_address").value;
+    var qq=document.getElementById("_qq").value;
+
+    var email_re=/^([0-9A-Za-z\-_\.]+)@([0-9a-z]+\.[a-z]{2,3}(\.[a-z]{2})?)$/g;
+    var phone_re=/^(13[0-9]\d{8}|15[0-35-9]\d{8}|18[0-9]\{8}|14[57]\d{8}|17[-9]\d{8})$/;
+    var qq_re=/^[0-9]{5,10}$/;
+    if(!email_re.test(email)){
+        alert("电子邮件格式不正确");
+        return false;
+    }
+    else if(!phone_re.test(phone)){
+        alert("电话格式不正确");
+        return false;
+    }
+    else if(!qq_re.test(qq)){
+        alert("qq格式不正确");
+        return false;
+    }
+    else{
+        document.getElementById("change_list").style.display="none";
+        document.getElementById("shadow").style.display="none";
+        return true;
     }
 }

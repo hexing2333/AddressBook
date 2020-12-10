@@ -228,7 +228,7 @@
     z-index: 11;
 }
 
-#input_div {
+.input_div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -237,7 +237,7 @@
     margin-left: 150px;
 }
 
-#input_div p {
+.input_div p {
     font-size: 20px;
     font-weight: bold;
     width: 60px;
@@ -288,7 +288,7 @@
     font-size: 17px;
 }
 
-#btn_add_wrap {
+.btn_add_wrap {
     display: flex;
     flex-direction: row;
 }

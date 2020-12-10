@@ -5,6 +5,9 @@
     <title>在线通讯录</title>
     <script type="text/javascript" src="index.js" xmlns:th="http://www.thymeleaf.org" charset="utf-8" th:inline="javascript"></script>
     <link rel="stylesheet" href="index.css">
+    <!--    引入jquery-->
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
 <div class="main">
@@ -60,27 +63,28 @@
     <div id="add_list" class="add_css">
         <div style="margin-top: 20px;"></div>
         <form th:action="@{/index}" method="post" onsubmit="return addList();">
-            <div id="input_div">
+            <div class="input_div">
                 <p>姓名：</p>
                 <input type="text" placeholder="您的姓名" id="name" name="name" autocomplete="off"/>
             </div>
-            <div id="input_div">
+            <div class="input_div">
                 <p>电话：</p>
                 <input type="number" placeholder="11位电话号码" id="phone" name="phone" autocomplete="off"/>
+                <text id="phoneAlert" style="color: #e20000"></text>
             </div>
-            <div id="input_div">
+            <div class="input_div">
                 <p>邮箱：</p>
                 <input type="email" placeholder="xxx@xxx.com" id="email" name="email" autocomplete="off"/>
             </div>
-            <div id="input_div">
+            <div class="input_div">
                 <p>住址：</p>
                 <input type="text" placeholder="您的住址" id="address" name="address" autocomplete="off"/>
             </div>
-            <div id="input_div">
+            <div class="input_div">
                 <p>QQ：</p>
                 <input type="number" placeholder="5-11位qq" id="qq" name="qq" autocomplete="off"/>
             </div>
-            <div id="btn_add_wrap">
+            <div class="btn_add_wrap">
                 <button type="submit" class="btn_add">添加</button>
                 <button type="button" class="btn_add" onclick="hideWindow()">关闭</button>
             </div>
@@ -91,29 +95,30 @@
 <!--    修改表单-->
     <div id="change_list" class="add_css">
         <div style="margin-top: 20px;"></div>
-        <form th:action="@{/changeItem}" method="post" onsubmit="return addList();">
+        <form th:action="@{/changeItem}" method="post" onsubmit="return changeList();">
             <input type="number" style="display: none" id="_id" name="id">
-            <div id="input_div">
+            <div class="input_div">
                 <p>姓名：</p>
                 <input type="text" placeholder="您的姓名" id="_name" name="name" autocomplete="off"/>
             </div>
-            <div id="input_div">
+            <div class="input_div">
                 <p>电话：</p>
                 <input type="number" placeholder="11位电话号码" id="_phone" name="phone" autocomplete="off"/>
+                <text id="_phoneAlert" style="color: #e20000"></text>
             </div>
-            <div id="input_div">
+            <div class="input_div">
                 <p>邮箱：</p>
                 <input type="email" placeholder="xxx@xxx.com" id="_email" name="email" autocomplete="off"/>
             </div>
-            <div id="input_div">
+            <div class="input_div">
                 <p>住址：</p>
                 <input type="text" placeholder="您的住址" id="_address" name="address" autocomplete="off"/>
             </div>
-            <div id="input_div">
+            <div class="input_div">
                 <p>QQ：</p>
                 <input type="number" placeholder="5-11位qq" id="_qq" name="qq" autocomplete="off"/>
             </div>
-            <div id="btn_add_wrap">
+            <div class="btn_add_wrap">
                 <button type="submit" class="btn_add">保存</button>
                 <button type="button" class="btn_add" onclick="hideWindow()">关闭</button>
             </div>
@@ -128,3 +133,59 @@
 </div>
 </body>
 </html>
+
+<script>
+    $(document).ready(
+        //当增加页面 电话输入框变化时 发送ajax请求看是否电话已存在
+        $("#phone").bind("input propertychange",function() {
+            var phone = $("#phone").val();
+            $.ajax({
+                url: "/ajax/checkphone",
+                type: "POST",
+                data: {
+                    "phone":phone
+                },
+                success: function (result) {
+                    console.log(result);
+                    if(result === "success"){
+                        $("#phoneAlert").text("号码已存在")
+                    }
+                    else{
+                        $("#phoneAlert").text("")
+                    }
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $("#phoneAlert").text("")
+                    alert('错误！');
+                }
+            })
+        }),
+        //当修改页面 电话输入框变化时 发送ajax请求看是否电话已存在
+        $("#_phone").bind("input propertychange",function() {
+            console.log("789");
+            var _phone = $("#_phone").val();
+            $.ajax({
+                url: "/ajax/checkphone",
+                type: "POST",
+                data: {
+                    "phone":_phone
+                },
+                success: function (result) {
+                    console.log(result);
+                    if(result === "success"){
+                        $("#_phoneAlert").text("号码已存在")
+                    }
+                    else{
+                        $("#_phoneAlert").text("")
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $("#_phoneAlert").text("")
+                    alert('错误！');
+                }
+            })
+        })
+    )
+
+</script>
